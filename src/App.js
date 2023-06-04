@@ -1,7 +1,7 @@
-import { Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { ProductContextProvider } from "./context/ProductContext";
+import { CartContextProvider } from "./context/CartContext";
 import Nav from "./Components/Nav/Nav"
-import Home from "./Pages/Home/Home"
-import Mockbee from "./Pages/MockBee/Mockbee"
 import Footer from "./Components/Footer/Footer"
 import "./App.css";
 
@@ -9,12 +9,13 @@ import "./App.css";
 function App() {
   return (
     <>
-      <Nav />
-      <Routes>
-      <Route path="/mockman" element={<Mockbee />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <Footer />
+     <ProductContextProvider>
+     <CartContextProvider>
+        <Nav />
+        <Outlet />
+        <Footer />
+        </CartContextProvider>
+      </ProductContextProvider>
     </>
   );
 }
