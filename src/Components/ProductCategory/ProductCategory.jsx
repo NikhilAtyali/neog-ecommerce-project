@@ -1,25 +1,23 @@
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 import "./ProductCategory.css";
 function ProductCategory() {
-  const productCategoryList = [
-    {
-      name: "Fiction",
-    },
-    {
-      name: "Non_Fiction",
-    },
-    { name: "Science-Fiction" },
-    {
-      name: "Mystory",
-    },
-  ];
+    const [productCategoryList, setProductCategoryList] = useState([]);
+    useEffect(() => {
+      (async () => {
+        const response = await axios.get("/api/categories");
+        setProductCategoryList(response.data.categories);
+      })();
+    }, []);
   return (
     <ul className="product-category-container">
-      {productCategoryList.map(({ img, name }) => (
-        <NavLink to={`product-category/${name.toLowerCase()}`}>
+      {productCategoryList.map(({ id, image, category }) => (
+        <NavLink key={id} to="/products">
           <li className="product-category-item">
-            <img src={img} alt="" />
-            <span>{name}</span>
+            <img src={image} alt="" />
+            <span>{category}</span>
           </li>
         </NavLink>
       ))}
