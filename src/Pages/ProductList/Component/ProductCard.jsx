@@ -4,18 +4,22 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./ProductCard.css";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from "../../../context/CartContext"
-
-function ProductCard({product}) {
-    const { id, image, productName, rating, price, oldPrice, discount } = product;
+import { CartContext } from "../../../context/CartContext";
+import { WishlistContext } from "../../../context/WishListContext";
+function ProductCard({ product }) {
+  const { _id, image, productName, rating, price, oldPrice, discount } =
+    product;
   const { addItemToCart } = useContext(CartContext);
+  const { addItemToWishlist } = useContext(WishlistContext);
   return (
-    
-      <div className="product-card">
-        <button className="add-to-wishlist-btn">
-          <FavoriteIcon sx={{ color: "grey", "&:hover": { color: "red" } }} />
-        </button>
-        <NavLink to={`product-details/${id}`}>
+    <div className="product-card">
+      <button
+        className="add-to-wishlist-btn"
+        onClick={() => addItemToWishlist(product)}
+      >
+        <FavoriteIcon sx={{ color: "grey", "&:hover": { color: "red" } }} />
+      </button>
+      <NavLink to={`product-details/${_id}`}>
         <img className="product-card__img" src={image} alt="" />
         <div className="heading-rating-container">
           <h4 className="product-name">{productName}</h4>
@@ -31,15 +35,14 @@ function ProductCard({product}) {
           </div>
           <p className="discount">{discount}% OFF</p>
         </div>
-        </NavLink>
-        <button
+      </NavLink>
+      <button
         className="add-to-cart-btn"
         onClick={() => addItemToCart(product)}
       >
         ADD TO CART
       </button>
-      </div>
-    
+    </div>
   );
 }
 
