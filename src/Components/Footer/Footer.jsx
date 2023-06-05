@@ -9,21 +9,21 @@ function Footer() {
     <footer>
       <div className="footer-links">
         <a
-          href="https://www.twitter.com/prabalsh19"
+          href=""
           rel="noreferrer"
           target="_blank"
         >
           <TwitterIcon fontSize="large" sx={{ color: grey[500] }} />
         </a>
         <a
-          href="https://www.github.com/prabalsh19"
+          href=""
           rel="noreferrer"
           target="_blank"
         >
           <GitHubIcon fontSize="large" sx={{ color: grey[500] }} />
         </a>
         <a
-          href="https://www.linkedin.com/in/prabalsh19"
+          href=""
           rel="noreferrer"
           target="_blank"
         >

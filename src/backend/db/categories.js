@@ -1,59 +1,34 @@
 import { v4 as uuid } from "uuid";
 
-/**
- * Category Database can be added here.
- * You can add category of your wish with different attributes
- * */
-
-// export const categories = [
-//   {
-//     _id: uuid(),
-//     categoryName: "fiction",
-//     description:
-//       "literature in the form of prose, especially novels, that describes imaginary events and people",
-//   },
-//   {
-//     _id: uuid(),
-//     categoryName: "non-fiction",
-//     description:
-//       "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
-//   },
-//   {
-//     _id: uuid(),
-//     categoryName: "horror",
-//     description:
-//       "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-//   },
-// ];
-
 export const categories = [
   {
     _id: uuid(),
     alt: "product",
-    category: "Fiction",
+    category: "Wired",
     image:
-      "https://example.com/fiction.jpg",
+      "https://res.cloudinary.com/dgzehngjw/image/upload/v1651056984/evolt-ecommerce/p12_auvdnf.jpg",
   },
   {
     _id: uuid(),
     alt: "product",
-    category: "Non-Fiction",
+    category: "Wireless",
     image:
-      "https://example.com/non-fiction.jpg",
+      "https://res.cloudinary.com/dgzehngjw/image/upload/v1651052856/evolt-ecommerce/3_kgau6t.jpg",
   },
   {
     _id: uuid(),
     alt: "product",
-    category: "Science Fiction",
+    category: "Noise_Cancelling",
     image:
-      "https://example.com/sci-fi.jpg",
+      "https://res.cloudinary.com/dgzehngjw/image/upload/v1651052852/evolt-ecommerce/2_rf00wy.jpg",
   },
+
   {
     _id: uuid(),
     alt: "product",
-    category: "Mystery",
+    category: "Speaker",
     image:
-      "https://example.com/mystery.jpg",
+      "https://res.cloudinary.com/dgzehngjw/image/upload/v1651052858/evolt-ecommerce/4_ipsjrk.jpg",
   },
 ];
 
