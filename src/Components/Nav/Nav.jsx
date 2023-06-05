@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
+import { Link , NavLink} from "react-router-dom";
+import Search from "../Search/Search"
+import { ProductContext } from "../../context/ProductContext"
+import { useContext } from "react";
 import "./Nav.css";
 export default function Nav() {
+  const { dispatch } = useContext(ProductContext);
   return (
     <div className="nav-container">
       <nav className="nav">
+      <NavLink to="/" onClick={() => dispatch({ type: "RESET_SEARCH" })}>
         <h1 className="nav__logo">COMMERCE</h1>
-        <div className="nav__search-container">
-          <input type="text" />
-          <button>
-            <SearchIcon />
-          </button>
-        </div>
+        </NavLink>
+        <Search />
 
         <div>
           <ul className="nav-links">
