@@ -1,6 +1,6 @@
 .cart-card-container {
     display: flex;
-    width: max-content;
+    max-width: 600px;
     gap: 1rem;
     margin: 1rem auto;
     background-color: white;
@@ -45,6 +45,17 @@
     margin-top: 10px;
   }
   .remove-cart-item-btn:hover {
+    cursor: pointer;
+}
+.cart-actions {
+  display: flex;
+
+  gap: 10px;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+.cart-add-to-wishlist-btn {
+  width: 100%;
     background-color: var(--secondary-color);
     color: var(--primary-color);
     cursor: pointer;
