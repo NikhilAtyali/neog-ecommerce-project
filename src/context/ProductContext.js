@@ -15,8 +15,11 @@ const reducer = (state, action) => {
         condition: { ...state.condition, search: action.payload },	
       };	
     }	
-    case "RESET_SEARCH": {	
-      return { ...state, condition: { ...state.condition, search: "" } };	
+    case "RESET": {
+      return {
+        ...state,
+        condition: { search: "", price: null, categories: [], rating: null },
+      };	
     }
     case "PRICE": {
       return {
