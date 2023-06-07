@@ -5,7 +5,7 @@ import "./Products.css";
 function Products() {
   return (
     <div className="products-page-container">
-     {/* <Filters /> */}
+     <Filters />
       <ProductsList />
     </div>
   );

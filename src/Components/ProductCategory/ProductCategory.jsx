@@ -6,12 +6,16 @@ import "./ProductCategory.css";
 function ProductCategory() {
   const { dispatch } = useContext(ProductContext);
     const [productCategoryList, setProductCategoryList] = useState([]);
-    useEffect(() => {
-      (async () => {
-        const response = await axios.get("/api/categories");
-        setProductCategoryList(response.data.categories);
-      })();
-    }, []);
+    useEffect(() => {	
+      (async () => {	
+        try {	
+          const response = await axios.get("/api/categories");	
+          setProductCategoryList(response.data.categories);	
+        } catch (e) {	
+          console.log(e);	
+        }	
+      })();	
+    }, []);;
   return (
     <ul className="product-category-container">
       {productCategoryList.map(({ id, image, category }) => (

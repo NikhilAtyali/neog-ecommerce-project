@@ -61,6 +61,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         condition: {
+          
           price: null,
           categories: [],
           rating: null,
@@ -74,6 +75,7 @@ export const ProductContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     products: [],
     condition: {
+      search:"",
       price: null,
       categories: [],
       rating: null,
@@ -114,6 +116,7 @@ export const ProductContextProvider = ({ children }) => {
     return arr.filter((item) => item.rating >= condition.rating);
   };
   const filtersArray = [
+    searchHandler,
     categoriesFilterHandler,
     ratingFilterHandler,
     priceFilterHandler,
