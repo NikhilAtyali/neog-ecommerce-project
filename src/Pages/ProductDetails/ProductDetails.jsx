@@ -2,7 +2,6 @@ import "./ProductDetails.css";
 import { useContext } from "react";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ProductContext } from "../../context/ProductContext";
 import { useEffect } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import { CartContext } from "../../context/CartContext";
