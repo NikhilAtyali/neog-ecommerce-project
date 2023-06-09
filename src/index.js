@@ -10,7 +10,7 @@ import Mockbee from "./Pages/MockBee/Mockbee"
 import ProductDetails from "./Pages/ProductDetails/ProductDetails"
 import Cart from "../src/Pages/Cart/Cart"
 import Wishlist from "../src/Pages/WishList/WishList"
-
+import Login from "./Pages/Login/Login";
 // Call make Server
 makeServer();
 const router = createBrowserRouter([
@@ -34,6 +34,7 @@ const router = createBrowserRouter([
         element: <Wishlist />,
       },
       { path: "/wishlist/product-details/:id", element: <ProductDetails /> },
+      { path: "/login", element: <Login /> },
     ],
   },
 ]);
