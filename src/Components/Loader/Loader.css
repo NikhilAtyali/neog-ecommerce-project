@@ -8,6 +8,7 @@
   }
   .loader {
     max-width: 30rem;
+    object-fit: contain;
   }
   .loader-bg {
     position: absolute;

@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useEffect,useState, useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
+import Loader from "../Loader/Loader"
 import "./ProductCategory.css";
 function ProductCategory() {
   const { dispatch } = useContext(ProductContext);
