@@ -26,6 +26,22 @@ function ProductDetails() {
       }
     })();
   }, [id]);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const response = await fetch(`/api/products/${id}`);
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setSelectedProduct(data.product);
+  //       } else {
+  //         console.log("Error:", response.status);
+  //       }
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   })();
+  // }, [id]);
+  
   return (
     selectedProduct && (
       <div key={selectedProduct?._id} className="product-details-container">
