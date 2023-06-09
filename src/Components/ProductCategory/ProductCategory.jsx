@@ -16,6 +16,23 @@ function ProductCategory() {
         }	
       })();	
     }, []);;
+    // useEffect(() => {
+    //   (async () => {
+    //     try {
+    //       const response = await fetch("/api/categories");
+    //       if (response.ok) {
+    //         const data = await response.json();
+    //         setProductCategoryList(data.categories);
+    //       } else {
+    //         console.log("Error:", response.status);
+    //       }
+    //     } catch (e) {
+    //       console.log(e);
+    //     }
+    //   })();
+    // }, []);
+    
+    if (productCategoryList.length === 0) return <Loader />;
   return (
     <ul className="product-category-container">
       {productCategoryList.map(({ id, image, category }) => (

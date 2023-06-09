@@ -3,7 +3,7 @@ import { CartContext } from "../../../src/context/CartContext"
 // import "./CartSummary.css";
 import "./CartSummery2.css"
 function CartSummary() {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems,totalPrice, totalDiscount } = useContext(CartContext);
   return (
     <div className="cart-summary-container">
       <h4>PRICE DETAILS</h4>
@@ -11,11 +11,11 @@ function CartSummary() {
 
       <div className="summary-item">
         <span>Price: ({cartItems.length} items)</span>
-        <span>₹{100}</span>
+        <span>₹{totalPrice}</span>
       </div>
       <div className="summary-item">
         <span>Discount: </span>
-        <span>₹{20}</span>
+        <span>(-)₹{Math.abs(totalDiscount)}</span>
       </div>
       <div className="summary-item">
         <span>Delivery Charges: </span>
@@ -23,8 +23,9 @@ function CartSummary() {
       </div>
       <div className="total-amount">
         <span>Total Amount</span>
-        <span>₹80</span>
+        <span>₹{totalPrice + totalDiscount}</span>
       </div>
+        <button className="checkout-btn">CHECK OUT</button>
     </div>
   );
 }
