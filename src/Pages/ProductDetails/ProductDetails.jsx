@@ -21,6 +21,7 @@ function ProductDetails() {
     (async () => {
       try {
         const response = await axios.get(`/api/products/${id}`);
+        console.log(response, "////////////////////////////////////");
         setSelectedProduct(() => response.data.product);	
       } catch (e) {
         console.log(e);
