@@ -1,11 +1,9 @@
-
 import { useState } from "react";
 import "./Login.css";
 import axios from "axios";
-import { AuthContext } from "../../context/AuthContext"
+import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
-import {Link, useNavigate, useLocation } from "react-router-dom";
-
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -23,21 +21,26 @@ function Login() {
         email,
         password,
       });
-      console.log(response);
-      if (response.status === 200) {
-        console.log("here");
-        setIsLoggedIn(true);
-        setUserDetails(response.data.foundUser);
-        location.state
-          ? navigate(location?.state?.location?.pathname)
-          : navigate("/");
-      }
+      setIsLoggedIn(true);
+      setUserDetails(response.data.foundUser);
+      location.state
+        ? navigate(location?.state?.location?.pathname)
+        : navigate("/");
     } catch (e) {
       setIsLoggedIn(false);
-      if (e && e.response && e.response.data && e.response.data.errors && e.response.data.errors[0]) {
-        setError(() => ({ hasError: true, message: e.response.data.errors[0] }));
+      if (
+        e &&
+        e.response &&
+        e.response.data &&
+        e.response.data.errors &&
+        e.response.data.errors[0]
+      ) {
+        setError(() => ({
+          hasError: true,
+          message: e.response.data.errors[0],
+        }));
       } else {
-        setError(() => ({ hasError: true, message: 'An error occurred.' }));
+        setError(() => ({ hasError: true, message: "An error occurred." }));
       }
     }
   };
