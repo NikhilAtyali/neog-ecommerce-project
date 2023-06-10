@@ -7,7 +7,6 @@ import StarIcon from "@mui/icons-material/Star";
 import { CartContext } from "../../context/CartContext";
 import { WishlistContext } from "../../context/WishListContext";
 import axios from "axios";
-import { toast } from "react-toastify";
 
 function ProductDetails() {
   const {cartItems, addItemToCart } = useContext(CartContext);
@@ -85,16 +84,6 @@ function ProductDetails() {
               <button	
                 className="product-details__add-to-cart-btn"	
                 onClick={() => {
-                  toast.success("Added To The Cart", {
-                    position: "bottom-right",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                  });
                   addItemToCart(selectedProduct);
                 }}	
               >	
@@ -109,16 +98,6 @@ function ProductDetails() {
               <button	
                 className="product-details__add-to-wishlist-btn"	
                 onClick={() => {
-                  toast.success("Added To The Wishlist", {
-                    position: "bottom-right",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                  });
                   addItemToWishlist(selectedProduct);
                 }}
               >	
