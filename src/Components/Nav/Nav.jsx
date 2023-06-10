@@ -18,8 +18,8 @@ export default function Nav() {
   const { setWishlistItems } = useContext(WishlistContext);
   const logoutHandler = () => {
     setIsLoggedIn(false);
-    setCartItems([]);
-    setWishlistItems([]);
+    setCartItems(()=>[]);
+    setWishlistItems(()=>[]);
     localStorage.removeItem("encodedToken");
   };
   return (
