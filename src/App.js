@@ -8,6 +8,7 @@ import { WishlistContextProvider } from "../src/context/WishListContext";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { AddressContextProvider } from "../src/context/AddressContext"
 
 function App() {
   return (
@@ -16,10 +17,12 @@ function App() {
       <ProductContextProvider>
         <CartContextProvider>
           <WishlistContextProvider>
+          <AddressContextProvider>
             <Nav />
             <ToastContainer />
             <Outlet />
             <Footer />
+            </AddressContextProvider>
           </WishlistContextProvider>
         </CartContextProvider>
       </ProductContextProvider>
