@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       },
       { path: "/wishlist/product-details/:id", element: <ProductDetails /> },
       { path: "/login", element: <Login /> },
-      { path: "/signup", element: <SignUp /> },
+      { path: "/sign-up", element: <SignUp /> },
       { path: "/logout", element: <Logout /> },
       {
         path: "/account",
