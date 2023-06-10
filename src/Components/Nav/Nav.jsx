@@ -1,6 +1,8 @@
 import { Link , NavLink} from "react-router-dom";
 import Search from "../Search/Search"
 import { ProductContext } from "../../context/ProductContext"
+import { CartContext } from "../../context/CartContext"
+import { WishlistContext } from "../../context/WishListContext"
 import { AuthContext } from "../../context/AuthContext";
 import { useContext, useState } from "react";
 import "./Nav.css";
@@ -12,8 +14,12 @@ export default function Nav() {
   const [showMobileNav, setShowMobileNav] = useState(false);
   const { dispatch } = useContext(ProductContext);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
+  const { setCartItems } = useContext(CartContext);
+  const { setWishlistItems } = useContext(WishlistContext);
   const logoutHandler = () => {
     setIsLoggedIn(false);
+    setCartItems([]);
+    setWishlistItems([]);
     localStorage.removeItem("encodedToken");
   };
   return (
@@ -32,7 +38,7 @@ export default function Nav() {
             {isLoggedIn ? (	
                <>
                <NavLink to="/account/profile">Account</NavLink>
-               <NavLink to="/logout" onClick={() => logoutHandler()}>
+               <NavLink to="/logout" onClick={ logoutHandler()}>
                  Logout
                </NavLink>
              </>
