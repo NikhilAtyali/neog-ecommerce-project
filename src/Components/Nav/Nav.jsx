@@ -11,7 +11,11 @@ import CloseIcon from "@mui/icons-material/Close";
 export default function Nav() {
   const [showMobileNav, setShowMobileNav] = useState(false);
   const { dispatch } = useContext(ProductContext);
-  const { isLoggedIn } = useContext(AuthContext)
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
+  const logoutHandler = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("encodedToken");
+  };
   return (
     <div className="nav-container">
       <nav className="nav">
@@ -26,7 +30,12 @@ export default function Nav() {
             <Link to="/wishlist">Wishlist</Link>
             <Link to="/cart">My Cart</Link>
             {isLoggedIn ? (	
-              <NavLink to="/account">Account</NavLink>	
+               <>
+               <NavLink to="/account/profile">Account</NavLink>
+               <NavLink to="/logout" onClick={() => logoutHandler()}>
+                 Logout
+               </NavLink>
+             </>
             ) : (	
               <NavLink to="/login">Login</NavLink>	
             )}
@@ -61,12 +70,23 @@ export default function Nav() {
                   My Cart	
                 </NavLink>	
                 {isLoggedIn ? (	
-                  <NavLink	
-                    onClick={() => setShowMobileNav(false)}	
-                    to="/account"	
-                  >	
-                    Account	
-                  </NavLink>	
+                  <>
+                  <NavLink
+                    onClick={() => setShowMobileNav(false)}
+                    to="/account/profile"
+                  >
+                    Account
+                  </NavLink>
+                  <NavLink
+                    to="/logout"
+                    onClick={() => {
+                      setShowMobileNav(false);
+                      logoutHandler();
+                    }}
+                  >
+                    Logout
+                  </NavLink>
+                </>	
                 ) : (	
                   <NavLink onClick={() => setShowMobileNav(false)} to="/login">	
                     Login	
