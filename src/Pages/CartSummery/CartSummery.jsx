@@ -6,7 +6,7 @@ function CartSummary() {
   const { cartItems,totalPrice, totalDiscount } = useContext(CartContext);
   return (
     <div className="cart-summary-container">
-      <h4>PRICE DETAILS</h4>
+      <h4>Order Summery</h4>
       <hr />
 
       <div className="summary-item">
@@ -25,7 +25,7 @@ function CartSummary() {
         <span>Total Amount</span>
         <span>₹{totalPrice + totalDiscount}</span>
       </div>
-        <button className="checkout-btn">CHECK OUT</button>
+        <button className="checkout-btn">Place Order</button>
     </div>
   );
 }

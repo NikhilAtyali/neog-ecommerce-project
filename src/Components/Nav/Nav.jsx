@@ -14,12 +14,15 @@ export default function Nav() {
   const [showMobileNav, setShowMobileNav] = useState(false);
   const { dispatch } = useContext(ProductContext);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext)
-  const { setCartItems } = useContext(CartContext);
+  const { setCartItems, setTotalPrice, setTotalDiscount } =
+    useContext(CartContext);
   const { setWishlistItems } = useContext(WishlistContext);
   const logoutHandler = () => {
     setIsLoggedIn(false);
     setCartItems(()=>[]);
     setWishlistItems(()=>[]);
+    setTotalPrice(0);
+    setTotalDiscount(0);
     localStorage.removeItem("encodedToken");
   };
   return (
