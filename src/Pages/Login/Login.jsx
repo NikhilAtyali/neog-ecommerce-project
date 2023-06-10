@@ -4,14 +4,16 @@ import "./Login.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext"
 import { useContext } from "react";
-import {Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate, useLocation } from "react-router-dom";
+
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ hasError: false, message: "" });
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { setIsLoggedIn, setUserDetails } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -25,11 +27,23 @@ function Login() {
       if (response.status === 200) {
         console.log("here");
         setIsLoggedIn(true);
-        navigate("/");
+        setUserDetails(response.data.foundUser);
+        location.state
+          ? navigate(location?.state?.location?.pathname)
+          : navigate("/");
       }
     } catch (e) {
-      setError(() => ({ hasError: true, message: e.response.data.errors[0] }));
+      setIsLoggedIn(false);
+      if (e && e.response && e.response.data && e.response.data.errors && e.response.data.errors[0]) {
+        setError(() => ({ hasError: true, message: e.response.data.errors[0] }));
+      } else {
+        setError(() => ({ hasError: true, message: 'An error occurred.' }));
+      }
     }
+  };
+  const guestLoginHandler = async (e) => {
+    setEmail("adarshbalika@gmail.com");
+    setPassword("adarshbalika");
   };
   return (
     <form autoComplete="off" onSubmit={loginHandler} action="">
@@ -41,6 +55,7 @@ function Login() {
           value={email}
           type="email"
           name="email"
+          required
         />
         <label htmlFor="password">Password</label>
         <input
@@ -49,8 +64,12 @@ function Login() {
           type="password"
           name=""
           id=""
+          required
         />
         {error.hasError && <span className="error-msg">{error.message}</span>}
+        <button onClick={guestLoginHandler} type="submit" className="auth-btn">
+          Guest Login
+        </button>
         <button type="submit" className="auth-btn">
           Login
         </button>
