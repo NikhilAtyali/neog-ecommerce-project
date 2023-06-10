@@ -34,7 +34,9 @@ function CartDetailCard(product) {
         <div className="cart-item-quantity">
           <span>Quantity: </span>
           <RemoveCircleIcon
-            onClick={() => decreaseQuantity(_id)}
+            onClick={() =>
+              qty <= 1 ? removeItemFromCart(_id) : decreaseQuantity(_id)
+            }
             sx={{ "&:hover": { cursor: "pointer" } }}
           />
 

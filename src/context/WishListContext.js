@@ -146,37 +146,49 @@ export const WishlistContextProvider = ({ children }) => {
   const encodedToken = localStorage.getItem("encodedToken");
   useEffect(() => {
     (async () => {
-      const response = await axios.get("/api/user/wishlist", {
+      try {
+        const response = await axios.get("/api/user/wishlist", {
+          headers: {
+            authorization: encodedToken,
+          },
+        });
+        setWishlistItems(() => response.data.wishlist);
+      } catch (e) {
+        console.log(e);
+      }
+    })();
+  }, [encodedToken]);
+
+  const addItemToWishlist = async (product) => {
+    try {
+      const response = await axios.post(
+        "/api/user/wishlist",
+        {
+          product,
+        },
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+
+      setWishlistItems(() => response.data.wishlist);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const removeFromWishlist = async (id) => {
+    try {
+      const response = await axios.delete(`/api/user/wishlist/${id}`, {
         headers: {
           authorization: encodedToken,
         },
       });
       setWishlistItems(() => response.data.wishlist);
-    })();
-  }, [encodedToken]);
-
-  const addItemToWishlist = async (product) => {
-    const response = await axios.post(
-      "/api/user/wishlist",
-      {
-        product,
-      },
-      {
-        headers: {
-          authorization: encodedToken,
-        },
-      }
-    );
-    console.log("wishlost", response.data.wishlist);
-    setWishlistItems(() => response.data.wishlist);
-  };
-  const removeFromWishlist = async (id) => {
-    const response = await axios.delete(`/api/user/wishlist/${id}`, {
-      headers: {
-        authorization: encodedToken,
-      },
-    });
-    setWishlistItems(() => response.data.wishlist);
+    } catch (e) {
+      console.log(e);
+    }
   };
   const value = {
     wishlistItems,
