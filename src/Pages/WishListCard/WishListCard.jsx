@@ -62,21 +62,11 @@ function WishlistCard({ product }) {
       {productExistInCart ? (
         <button
         onClick={() => {
-          toast.success("Quantity Increased By +1", {
-            position: "bottom-right",
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-          });
           increaseQuantity(_id);
         }}
           className="add-to-cart-btn"
         >
-          +1 QUANTITY
+          Increase Quantity
         </button>
       ) : (
         <button
