@@ -2,10 +2,11 @@ import StarIcon from "@mui/icons-material/Star";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./ProductCard.css";
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { WishlistContext } from "../../../context/WishListContext";
 function ProductCard({ product }) {
+  const [disableCursor, setDisableCursor] = useState(false);
   const { _id, image, productName, rating, price, oldPrice, discount } =
     product;
   const { cartItems, addItemToCart } = useContext(CartContext);
@@ -14,27 +15,33 @@ function ProductCard({ product }) {
 
   const productExistInCart = cartItems.some((item) => item._id === _id);
   const productExistInWishlist = wishlistItems.some((item) => item._id === _id);
+  const disableCursorHandler = () => {
+    setDisableCursor(true);
+    setTimeout(() => {
+      setDisableCursor(false);
+    }, 1000);
+  };
   return (
     <div className="product-card">
       {productExistInWishlist ? (
         <>
-        <button className="add-to-wishlist-btn">
-          <FavoriteIcon
-            onClick={() => {
-              removeFromWishlist(_id);
-            }}
-            sx={{
-              color: "red",
-            }}
-          />
-        </button>
-      </>
+          <button className="add-to-wishlist-btn">
+            <FavoriteIcon
+              onClick={() => {
+                removeFromWishlist(_id);
+              }}
+              sx={{
+                color: "red",
+              }}
+            />
+          </button>
+        </>
       ) : (
         <button className="add-to-wishlist-btn">
           <FavoriteIcon
-          onClick={() => {
-            addItemToWishlist(product);
-          }}
+            onClick={() => {
+              addItemToWishlist(product);
+            }}
             sx={{
               color: "grey",
 
@@ -63,12 +70,19 @@ function ProductCard({ product }) {
       </NavLink>
       {productExistInCart ? (
         <NavLink to="/cart">
-          <button className="add-to-cart-btn">GO TO CART</button>
+          <button
+            className={`add-to-cart-btn `}
+            id={`${disableCursor ? "disable-cursor" : ""}`}
+          >
+            GO TO CART
+          </button>
         </NavLink>
       ) : (
         <button
-          className="add-to-cart-btn"
+          className={`add-to-cart-btn `}
+          id={`${disableCursor ? "disable-cursor" : ""}`}
           onClick={() => {
+            disableCursorHandler();
             addItemToCart(product);
           }}
         >
