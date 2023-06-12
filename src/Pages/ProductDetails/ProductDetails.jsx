@@ -13,11 +13,18 @@ function ProductDetails() {
   const {cartItems, addItemToCart } = useContext(CartContext);
   const { wishlistItems,addItemToWishlist } = useContext(WishlistContext);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [disableCursor, setDisableCursor] = useState(false);
   const { isLoggedIn } = useContext(AuthContext);
   const { id } = useParams();
 
   const productExistInCart = cartItems.some((item) => item._id === id);	
   const productExistInWishlist = wishlistItems.some((item) => item._id === id);
+  const disableCursorHandler = () => {
+    setDisableCursor(true);
+    setTimeout(() => {
+      setDisableCursor(false);
+    }, 1000);
+  };
   useEffect(() => {
     (async () => {
       try {
@@ -29,21 +36,6 @@ function ProductDetails() {
       }
     })();
   }, [id]);
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const response = await fetch(`/api/products/${id}`);
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         setSelectedProduct(data.product);
-  //       } else {
-  //         console.log("Error:", response.status);
-  //       }
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   })();
-  // }, [id]);
   
   return (
     selectedProduct && (

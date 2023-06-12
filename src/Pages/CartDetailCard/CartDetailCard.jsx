@@ -1,11 +1,10 @@
 import "./CartDetailCard.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext"
 import { WishlistContext } from "../../context/WishListContext"
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 function CartDetailCard(product) {
   const {
     _id,
@@ -21,6 +20,13 @@ function CartDetailCard(product) {
     const { wishlistItems, addItemToWishlist } = useContext(WishlistContext);
 
   const productExistInWishlist = wishlistItems.some((item) => item._id === _id);
+  const [disableCursor, setDisableCursor] = useState(false);
+  const disableCursorHandler = () => {
+    setDisableCursor(true);
+    setTimeout(() => {
+      setDisableCursor(false);
+    }, 1000);
+  };
   return (
     <div className="cart-card-container">
       <img className="card-card__image" src={image} alt="" />
@@ -60,18 +66,10 @@ function CartDetailCard(product) {
             </button>
           ) : (
             <button
+            id={`${disableCursor ? "disable-cursor" : ""}`}
               className="cart-add-to-wishlist-btn"
               onClick={() => {
-                toast.success("Moved To The Wishlist", {
-                  position: "bottom-right",
-                  autoClose: 1000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: false,
-                  draggable: true,
-                  progress: undefined,
-                  theme: "dark",
-                });
+                disableCursorHandler();
                 addItemToWishlist(product);
               }}
             >
