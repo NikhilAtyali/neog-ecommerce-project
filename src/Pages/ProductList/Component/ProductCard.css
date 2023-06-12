@@ -78,5 +78,6 @@
   z-index: 99;
 }
 #disable-cursor {
-  cursor: not-allowed;
+  cursor: no-drop;
+  
 }

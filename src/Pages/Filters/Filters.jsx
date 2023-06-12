@@ -6,7 +6,6 @@ function Filters() {
   const { state,dispatch } = useContext(ProductContext);
   const submitHandler = (e) => {
     e.preventDefault();
-    e.target.reset();
     setRangeValue(1);
   };
   return (
@@ -24,6 +23,7 @@ function Filters() {
             <input
               onClick={() => dispatch({ type: "PRICE", payload: "HTL" })}
               type="radio"
+              checked={state.condition.price?.includes("HTL")}
               name="price"
               id="HTL"
             />
@@ -33,6 +33,7 @@ function Filters() {
             <input
               onClick={() => dispatch({ type: "PRICE", payload: "LTH" })}
               type="radio"
+              checked={state.condition.price?.includes("LTH")}
               name="price"
               id="LTH"
             />
