@@ -5,6 +5,7 @@
     justify-content: center;
     width: 90%;
     margin: auto;
+    min-height: 100vh;
     padding: 1rem;
     background-color: var(--background-color);;
   }
