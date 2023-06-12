@@ -10,7 +10,7 @@ ul {
   gap: 2rem;
   margin: 5rem auto;
   padding: 1rem;
-  min-height: 60vh;
+  min-height: 80vh;
   width: 100%;
 }
 
@@ -19,6 +19,8 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: max-content;
+  text-align: center;
 }
 .product-category-item:hover {
   cursor: pointer;
