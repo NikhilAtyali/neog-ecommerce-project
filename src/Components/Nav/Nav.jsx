@@ -24,6 +24,7 @@ export default function Nav() {
     setTotalPrice(0);
     setTotalDiscount(0);
     localStorage.removeItem("encodedToken");
+    localStorage.removeItem("userDetails");
   };
   return (
     <div className="nav-container">

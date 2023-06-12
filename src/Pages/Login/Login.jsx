@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./Login.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
@@ -9,7 +9,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ hasError: false, message: "" });
-  const { setIsLoggedIn, setUserDetails } = useContext(AuthContext);
+  const {isLoggedIn, setIsLoggedIn, setUserDetails } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,6 +23,10 @@ function Login() {
       });
       setIsLoggedIn(true);
       setUserDetails(response.data.foundUser);
+      localStorage.setItem(
+        "userDetails",
+        JSON.stringify(response.data.foundUser)
+      );
       location.state
         ? navigate(location?.state?.location?.pathname)
         : navigate("/");
@@ -48,6 +52,11 @@ function Login() {
     setEmail("adarshbalika@gmail.com");
     setPassword("adarshbalika");
   };
+  useEffect(() => {
+    isLoggedIn
+      ? navigate(location?.state?.location?.pathname)
+      : navigate("/account/profile");
+  }, [isLoggedIn, location, navigate]);
   return (
     <form autoComplete="off" onSubmit={loginHandler} action="">
       <div className="login-container">
