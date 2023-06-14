@@ -72,6 +72,7 @@ function CartDetailCard(product) {
                 disableCursorHandler();
                 addItemToWishlist(product);
               }}
+              disabled={disableCursor}
             >
               Move TO WISHLIST
             </button>
