@@ -1,7 +1,9 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./Login.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
+import { CartContext } from "../../context/CartContext";
+import {WishlistContext} from "../../context/WishListContext"
 import { useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
@@ -9,7 +11,10 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ hasError: false, message: "" });
-  const {isLoggedIn, setIsLoggedIn, setUserDetails } = useContext(AuthContext);
+  const { isLoggedIn, setIsLoggedIn, setUserDetails } = useContext(AuthContext);
+  const { setCartItems, updateTotalPrice, updateTotalDiscount } =
+    useContext(CartContext);
+  const { setWishlistItems } = useContext(WishlistContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,29 +28,35 @@ function Login() {
       });
       setIsLoggedIn(true);
       setUserDetails(response.data.foundUser);
+      localStorage.setItem("encodedToken", response.data.encodedToken);
       localStorage.setItem(
         "userDetails",
         JSON.stringify(response.data.foundUser)
       );
+      const cartResponse = await axios.get("/api/user/cart", {	
+        headers: {	
+          authorization: response.data.encodedToken,	
+        },	
+      });	
+      setCartItems(cartResponse.data.cart);	
+      updateTotalPrice(cartResponse.data.cart);	
+      updateTotalDiscount(cartResponse.data.cart);	
+      const wishListResponse = await axios.get("/api/user/wishlist", {	
+        headers: {	
+          authorization: response.data.encodedToken,	
+        },	
+      });	
+      setWishlistItems(wishListResponse.data.wishlist);
       location.state
         ? navigate(location?.state?.location?.pathname)
         : navigate("/");
     } catch (e) {
       setIsLoggedIn(false);
-      if (
-        e &&
-        e.response &&
-        e.response.data &&
-        e.response.data.errors &&
-        e.response.data.errors[0]
-      ) {
-        setError(() => ({
-          hasError: true,
-          message: e.response.data.errors[0],
-        }));
-      } else {
-        setError(() => ({ hasError: true, message: "An error occurred." }));
-      }
+      
+      setError(() => ({	
+        hasError: true,	
+        message: e.response?.data?.errors[0],	
+      }));
     }
   };
   const guestLoginHandler = async (e) => {
@@ -54,7 +65,7 @@ function Login() {
   };
   useEffect(() => {
     isLoggedIn ? navigate("/account/profile") : navigate("/login");
-  }, [isLoggedIn, location, navigate]);
+  }, [isLoggedIn,  navigate]);
   return (
     <form autoComplete="off" onSubmit={loginHandler} action="">
       <div className="login-container">
