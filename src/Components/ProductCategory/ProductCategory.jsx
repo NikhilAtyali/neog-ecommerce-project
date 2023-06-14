@@ -21,6 +21,8 @@ function ProductCategory() {
     
     if (productCategoryList.length === 0) return <Loader />;
   return (
+    <>
+    <h2 className="product-category-heading">Product Categories</h2>
     <ul className="product-category-container">
       {productCategoryList.map(({ id, image, category }) => (
         <li
@@ -39,6 +41,7 @@ function ProductCategory() {
         </li>
       ))}
     </ul>
+  </>
   );
 }
 

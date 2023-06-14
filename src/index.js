@@ -13,10 +13,10 @@ import Wishlist from "../src/Pages/WishList/WishList";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
 import Auth from "./Auth/auth";
-import Logout from "../src/Pages/LogOut/Logout"
-import Account from "../src/Pages/Account/Account"
-import Profile from "../src/Pages/Account/Component/Profile"
-import Address from "../src/Pages/Account/Component/Address"
+import Logout from "../src/Pages/LogOut/Logout";
+import Account from "../src/Pages/Account/Account";
+import Profile from "../src/Pages/Account/Component/Profile";
+import Address from "../src/Pages/Account/Component/Address";
 import Checkout from "./Pages/Checkout/Checkout";
 import OrderSuccess from "./Pages/OrderSuccess/OrderSuccess";
 // Call make Server
@@ -53,14 +53,21 @@ const router = createBrowserRouter([
         ),
       },
       { path: "/wishlist/product-details/:id", element: <ProductDetails /> },
-      { path: "/login", element: <Login /> },
+      {
+        path: "/login",
+        element: <Login />,
+      },
       { path: "/sign-up", element: <SignUp /> },
       { path: "/logout", element: <Logout /> },
       { path: "/checkout", element: <Checkout /> },
       { path: "/order-success", element: <OrderSuccess /> },
       {
         path: "/account",
-        element: <Account />,
+        element: (
+          <Auth>
+            <Account />
+          </Auth>
+        ),
         children: [
           { path: "profile", element: <Profile /> },
           { path: "address", element: <Address /> },

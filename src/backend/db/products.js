@@ -1,5 +1,10 @@
 import { v4 as uuid } from "uuid";
 
+/**
+ * Product Database can be added here.
+ * You can add products of your wish with different attributes
+ * */
+
 export const products = [
   {
     _id: uuid(),
@@ -19,7 +24,7 @@ export const products = [
     rating: 3,
   },
   {
-    _id: uuid(),
+    _id: 1,
     type: "speaker",
     brand: "marshall",
     addedInYear: 2022,
@@ -36,7 +41,7 @@ export const products = [
     rating: 5,
   },
   {
-    _id: uuid(),
+    _id: 0,
     brand: "boat",
     type: "wireless",
     addedInYear: 2020,
@@ -120,23 +125,6 @@ export const products = [
     discount: 18,
     rating: 4,
   },
-  {
-    _id: uuid(),
-    addedInYear: 2021,
-    brand: "bose",
-    type: "noise_cancelling",
-    productName: "Bose Touch Control,Triple Black",
-    alt: "Bose Touch Control",
-    image:
-      "https://res.cloudinary.com/dgzehngjw/image/upload/v1651056670/evolt-ecommerce/p8_udpu7y.jpg",
-    description:
-      "Bose QuietComfort Noise Cancelling Earbuds - Bluetooth Truly Wireless in Ear Earbuds, Noise Cancelling Earbuds with Touch Control,Triple Black",
-    price: "1500.00",
-    oldPrice: "3000.00",
-    inStock: true,
-    discount: 50,
-    rating: 4,
-  },
 
   {
     _id: uuid(),
@@ -173,7 +161,7 @@ export const products = [
     rating: 4,
   },
   {
-    _id: uuid(),
+    _id: 2,
     brand: "boat",
     type: "wireless",
     addedInYear: 2022,
