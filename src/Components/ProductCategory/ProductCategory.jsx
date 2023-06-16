@@ -4,16 +4,17 @@ import { useEffect,useState, useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import Loader from "../Loader/Loader"
 import "./ProductCategory.css";
+import {getCategories} from "../../services/services"
 function ProductCategory() {
   const { dispatch } = useContext(ProductContext);
     const [productCategoryList, setProductCategoryList] = useState([]);
     useEffect(() => {	
       (async () => {	
         try {	
-          const response = await axios.get("/api/categories");	
+          const response = await getCategories();	
           setProductCategoryList(response.data.categories);	
         } catch (e) {	
-          console.log(e);	
+          console.error(e);	
         }	
       })();	
     }, []);;
@@ -26,6 +27,7 @@ function ProductCategory() {
     <ul className="product-category-container">
       {productCategoryList.map(({ id, image, category }) => (
         <li
+        key={id}
           onClick={() =>
             dispatch({
               type: "CATEGORIES",

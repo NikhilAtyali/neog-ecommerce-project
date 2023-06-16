@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import SearchResult from "../SearchResult"
 import { useNavigate } from "react-router-dom";
+import SearchInput from "./component/SearchInput";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -11,22 +12,12 @@ const Search = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     navigate("/products");
-    dispatch({ type: "SEARCH", payload: searchQuery });
+    dispatch({ type: "SEARCH", payload: state.filters.search });
   };
 
   return (
     <form onSubmit={submitHandler} className="nav__search-container">
-      <input
-        value={state.condition.search}
-        type="text"
-        onChange={(e) => {
-          setSearchQuery(e.target.value);
-          dispatch({ type: "SEARCH", payload: e.target.value });
-        }}
-      />
-      <button type="submit">
-        <SearchIcon />
-      </button>
+      <SearchInput />
       <SearchResult />
     </form>
   );

@@ -16,7 +16,7 @@ function CartSummary({ selectedAddress }) {
     setTotalDiscount,
   } = useContext(CartContext);
   const { userDetails } = useContext(AuthContext);
-  const { firstName, lastName, email } = userDetails;
+  const { firstName, lastName, email } = userDetails || {};
   const navigate = useNavigate();
   
   const loadScript = async (url) => {
@@ -119,6 +119,9 @@ function CartSummary({ selectedAddress }) {
       <div className="total-amount">
         <span>Total Amount</span>
         <span>₹{totalPrice + totalDiscount}</span>
+        <button className="checkout-btn" onClick={8}>
+        CHECK OUT
+      </button>
       </div>
     </div>
   );

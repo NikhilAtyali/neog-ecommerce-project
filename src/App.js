@@ -9,6 +9,8 @@ import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { AddressContextProvider } from "../src/context/AddressContext"
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 function App() {
   return (

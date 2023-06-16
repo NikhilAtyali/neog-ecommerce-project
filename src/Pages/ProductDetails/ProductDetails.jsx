@@ -17,8 +17,8 @@ function ProductDetails() {
   const { isLoggedIn } = useContext(AuthContext);
   const { id } = useParams();
 
-  const productExistInCart = cartItems.some((item) => item._id === +id);	
-  const productExistInWishlist = wishlistItems.some((item) => item._id === +id);
+  const productExistInCart = cartItems.some((item) => item._id === id);
+  const productExistInWishlist = wishlistItems.some((item) => item._id === id);
   const disableCursorHandler = () => {
     setDisableCursor(true);
     setTimeout(() => {
@@ -29,10 +29,9 @@ function ProductDetails() {
     (async () => {
       try {
         const response = await axios.get(`/api/products/${id}`);
-        console.log(response, "////////////////////////////////////");
         setSelectedProduct(() => response.data.product);	
       } catch (e) {
-        console.log(e);
+        console.error(e);
       }
     })();
   }, [id]);
