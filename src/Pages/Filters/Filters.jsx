@@ -16,9 +16,9 @@ function Filters() {
         <ul>
           <li>
             <input
-              onClick={() => dispatch({ type: "PRICE", payload: "HTL" })}
+              onChange={() => dispatch({ type: "PRICE", payload: "htl" })}
               type="radio"
-              checked={state.filters.price?.includes("HTL")}
+              checked={state.filters.price.htl}
               name="price"
               id="HTL"
             />
@@ -26,9 +26,9 @@ function Filters() {
           </li>
           <li>
             <input
-              onClick={() => dispatch({ type: "PRICE", payload: "LTH" })}
+              onChange={() => dispatch({ type: "PRICE", payload: "lth" })}
               type="radio"
-              checked={state.filters.price?.includes("LTH")}
+              checked={state.filters.price.lth}
               name="price"
               id="LTH"
             />
