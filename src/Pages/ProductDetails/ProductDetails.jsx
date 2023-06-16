@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import { CartContext } from "../../context/CartContext";
 import { WishlistContext } from "../../context/WishListContext";
-import axios from "axios";
+import { getProductService } from "../../services/services"
 import { AuthContext } from "../../context/AuthContext";
 
 function ProductDetails() {
@@ -28,8 +28,8 @@ function ProductDetails() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios.get(`/api/products/${id}`);
-        setSelectedProduct(() => response.data.product);	
+        const response = await getProductService(id);
+        setSelectedProduct(() => response?.data?.product);
       } catch (e) {
         console.error(e);
       }
