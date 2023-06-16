@@ -143,21 +143,6 @@ export const WishlistContext = createContext();
 export const WishlistContextProvider = ({ children }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const encodedToken = localStorage.getItem("encodedToken");
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const response = await axios.get("/api/user/wishlist", {
-  //         headers: {
-  //           authorization: encodedToken,
-  //         },
-  //       });
-  //       setWishlistItems(() => response.data.wishlist);
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   })();
-  // }, [encodedToken]);
-
   const addItemToWishlist = async (product) => {
     const encodedToken = localStorage.getItem("encodedToken");
     try {
@@ -198,7 +183,7 @@ export const WishlistContextProvider = ({ children }) => {
         });
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
   const removeFromWishlist = async (id) => {
@@ -234,7 +219,7 @@ export const WishlistContextProvider = ({ children }) => {
         });
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
   const value = {

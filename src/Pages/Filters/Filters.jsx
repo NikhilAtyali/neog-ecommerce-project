@@ -23,7 +23,7 @@ function Filters() {
             <input
               onClick={() => dispatch({ type: "PRICE", payload: "HTL" })}
               type="radio"
-              checked={state.condition.price?.includes("HTL")}
+              checked={state.filters.price?.includes("HTL")}
               name="price"
               id="HTL"
             />
@@ -33,7 +33,7 @@ function Filters() {
             <input
               onClick={() => dispatch({ type: "PRICE", payload: "LTH" })}
               type="radio"
-              checked={state.condition.price?.includes("LTH")}
+              checked={state.filters.price?.includes("LTH")}
               name="price"
               id="LTH"
             />
@@ -50,7 +50,7 @@ function Filters() {
                   payload: { isChecked: e.target.checked, value: "wired" },
                 })
               }
-              checked={state.condition.categories.includes("wired")}
+              checked={state.filters.categories.includes("wired")}
               type="checkbox"
               name="categories"
               id=""
@@ -68,7 +68,7 @@ function Filters() {
                   },
                 })
               }
-              checked={state.condition.categories.includes("noise_cancelling")}
+              checked={state.filters.categories.includes("noise_cancelling")}
               type="checkbox"
               name="categories"
               id=""
@@ -83,7 +83,7 @@ function Filters() {
                   payload: { isChecked: e.target.checked, value: "wireless" },
                 })
               }
-              checked={state.condition.categories.includes("wireless")}
+              checked={state.filters.categories.includes("wireless")}
               type="checkbox"
               name="categories"
               id=""
@@ -98,7 +98,7 @@ function Filters() {
                   payload: { isChecked: e.target.checked, value: "speaker" },
                 })
               }
-              checked={state.condition.categories.includes("speaker")}
+              checked={state.filters.categories.includes("speaker")}
               type="checkbox"
               name="categories"
               id=""

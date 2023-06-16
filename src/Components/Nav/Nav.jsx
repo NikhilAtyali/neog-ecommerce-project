@@ -8,7 +8,8 @@ import { useContext, useState } from "react";
 import "./Nav.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-
+import Logo from "../../assets/img/Logo.png"
+import "./Nav.css"
 
 export default function Nav() {
   const [showMobileNav, setShowMobileNav] = useState(false);
@@ -30,24 +31,37 @@ export default function Nav() {
     <div className="nav-container">
       <nav className="nav">
       <NavLink to="/" onClick={() => dispatch({ type: "RESET" })}>
-        <h1 className="nav__logo">Sound Wave</h1>
+        
+        <img className="nav__logo" src={Logo} alt="logo" />
         </NavLink>
         <Search />
 
         <div>
           <ul className="nav-links">
-            <Link to="/products">Products</Link>
-            <Link to="/wishlist">Wishlist</Link>
-            <Link to="/cart">My Cart</Link>
+          <li>
+              <NavLink to="/products">Products</NavLink>
+            </li>
+            <li>
+              <NavLink to="/wishlist">Wishlist</NavLink>
+            </li>
+            <li>
+              <NavLink to="/cart">My Cart</NavLink>
+            </li>
             {isLoggedIn ? (	
                <>
-               <NavLink to="/account/profile">Account</NavLink>
-               <NavLink to="/logout" onClick={ logoutHandler()}>
-                 Logout
-               </NavLink>
+               <li>
+                  <NavLink to="/account/profile">Account</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/logout" onClick={logoutHandler}>
+                    Logout
+                  </NavLink>
+                </li>
              </>
             ) : (	
-              <NavLink to="/login">Login</NavLink>	
+              <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>	
             )}
           </ul>
           {/* Nav for screen width <=1024px */}
