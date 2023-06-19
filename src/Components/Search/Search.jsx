@@ -1,11 +1,11 @@
 import SearchIcon from "@mui/icons-material/Search";
+import { SearchInput } from "../Search/component/SearchInput.jsx";
 import { useContext, useState } from "react";
-import { ProductContext } from "../../context/ProductContext";
+import { ProductContext } from "../../context";
 import SearchResult from "../SearchResult"
 import { useNavigate } from "react-router-dom";
-import SearchInput from "./component/SearchInput";
 
-const Search = () => {
+export const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const { state, dispatch } = useContext(ProductContext);
   const navigate = useNavigate();
@@ -22,5 +22,3 @@ const Search = () => {
     </form>
   );
 };
-
-export default Search;

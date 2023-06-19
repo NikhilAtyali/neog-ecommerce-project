@@ -1,13 +1,11 @@
 import { useContext } from "react";
 import "./Cart.css";
-import { CartContext } from "../../context/CartContext";
-
-import CartSummary from "../CartSummery/CartSummery"
+import { CartContext } from "../../context";
 import CartDetailCard from "../CartDetailCard/CartDetailCard"
 import PriceDetail from "../PriceDetail/PriceDetail";
-function Cart() {
+export function Cart() {
   const { cartItems } = useContext(CartContext);
-  console.log(cartItems);
+
   return (
     <div className="cart-container">
       {cartItems.length < 1 ? (
@@ -25,5 +23,3 @@ function Cart() {
     </div>
   );
 }
-
-export default Cart;

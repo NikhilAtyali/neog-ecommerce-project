@@ -1,14 +1,16 @@
 import { Outlet } from "react-router-dom";
-import { ProductContextProvider } from "./context/ProductContext";
-import { CartContextProvider } from "./context/CartContext";
-import { AuthContextProvider } from "./context/AuthContext";
-import Nav from "./Components/Nav/Nav";
-import Footer from "./Components/Footer/Footer";
-import { WishlistContextProvider } from "../src/context/WishListContext";
+import {
+  ProductContextProvider,
+  CartContextProvider,
+  WishlistContextProvider,
+  AuthContextProvider,
+  AddressContextProvider,
+} from "./context";
+import { Nav } from "./Components"
+import { Footer } from "./Components"
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { AddressContextProvider } from "../src/context/AddressContext"
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 

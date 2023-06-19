@@ -3,7 +3,7 @@ import { useState } from "react";
 import CartSummary from "../CartSummery/CartSummery";
 import AddressList from "../Checkout/Component/AddressList";
 
-function Checkout() {
+export function Checkout() {
   const [selectedAddress, setSeletedAddress] = useState({});
   const getSelectedAddress = (address) => {
     console.log("here");
@@ -16,5 +16,3 @@ function Checkout() {
     </div>
   );
 }
-
-export default Checkout;

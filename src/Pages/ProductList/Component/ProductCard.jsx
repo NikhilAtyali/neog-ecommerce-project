@@ -3,8 +3,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./ProductCard.css";
 import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
-import { CartContext } from "../../../context/CartContext";
-import { WishlistContext } from "../../../context/WishListContext";
+import { CartContext, WishlistContext } from "../../../context"
 function ProductCard({ product }) {
   const [disableCursor, setDisableCursor] = useState(false);
   const { _id, image, productName, rating, price, oldPrice, discount } =

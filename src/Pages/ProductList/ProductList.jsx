@@ -1,19 +1,32 @@
-import "./ProductList.css";
-import ProductCard from "./Component/ProductCard";
-import { ProductContext } from "../../context/ProductContext"
 import { useContext } from "react";
+import "./ProductList.css"
+import { ProductContext } from "../../context/ProductContext"
+import ProductCard from "./Component/ProductCard";
 
-import "./ProductList.css";
-function ProductsList() {
+function ProductsList({
+  showFilterBtn,
+  setShowFilterMobile,
+  setShowFilterBtn,
+}) {
   const { filteredArray } = useContext(ProductContext);
- 
+
   return (
     <div className="products-container">
-     {filteredArray.map((product) => (
+      {filteredArray?.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
+      <div
+        id={`${showFilterBtn ? "" : "hide"}`}
+        onClick={() => {
+          setShowFilterMobile(true);
+          setShowFilterBtn(false);
+        }}
+        className="filter-btn-mobile"
+      >
+        <p>Filters</p>
+      </div>
     </div>
   );
 }
 
-export default ProductsList
+export default ProductsList;

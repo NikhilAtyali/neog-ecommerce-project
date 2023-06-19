@@ -17,7 +17,8 @@
   border-right: 5px solid var(--primary-color);
   padding: 0 1rem;
 }
-.filters-container input {
+.filters-container input,
+label {
   cursor: pointer;
 }
 .filters-container li {
@@ -36,4 +37,18 @@ input[type="range"] {
 .rating-filter-container {
   margin-right: 1rem;
 }
+.apply-btn::before {
+  content: "Apply";
+  display: inline-block;
+  font-size: 1.2rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  margin-top: 1rem;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+.filters-container h4 {
+  margin-top: 3rem;
+}
+
 
