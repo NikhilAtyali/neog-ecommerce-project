@@ -1,14 +1,10 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import "./Login.css";
-import axios from "axios";
-import { AuthContext } from "../../context/AuthContext";
-import { useContext, useEffect} from "react";
+import { AuthContext, CartContext, WishlistContext } from "../../context";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { CartContext } from "../../context/CartContext";
-import {WishlistContext} from "../../context/WishListContext"
 import { getCartService, loginService, getWishlistService } from "../../services/services";
 
-function Login() {
+export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ hasError: false, message: "" });
@@ -98,6 +94,4 @@ function Login() {
     </form>
   );
 }
-
-export default Login;
 

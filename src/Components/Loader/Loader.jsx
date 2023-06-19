@@ -1,6 +1,6 @@
 import "./Loader.css";
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <div className="loader-bg">
       <div className="loader-container">
@@ -14,4 +14,3 @@ const Loader = () => {
   );
 };
 
-export default Loader;

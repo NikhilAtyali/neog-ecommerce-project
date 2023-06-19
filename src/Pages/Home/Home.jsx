@@ -1,6 +1,6 @@
-import ProductCategory from "../../Components/ProductCategory/ProductCategory";
+import { ProductCategory } from "../../Components/ProductCategory/ProductCategory"
 import Carousel from "./Carousel"
-function Home() {
+export function Home() {
     return (
       <>
         <div className="hero">
@@ -11,4 +11,4 @@ function Home() {
     );
   }
   
-  export default Home;
+  

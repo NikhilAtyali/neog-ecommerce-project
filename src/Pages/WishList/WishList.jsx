@@ -1,9 +1,8 @@
 import "./WishList.css";
-import { WishlistContext } from "../../context/WishListContext"
-import ProductCard from "../ProductList/Component/ProductCard"
+import { WishlistContext } from "../../context";
 import WishlistCard from "../WishListCard/WishListCard";
 import { useContext } from "react";
-const Wishlist = () => {
+export const Wishlist = () => {
   const { wishlistItems } = useContext(WishlistContext);
   return (
     <>
@@ -21,5 +20,3 @@ const Wishlist = () => {
     </>
   );
 };
-
-export default Wishlist;
