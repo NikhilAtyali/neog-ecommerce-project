@@ -1,9 +1,19 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { ProductContext } from "../../../context";
 
 export function SearchInput() {
-  const { state, dispatch } = useContext(ProductContext);
+  const { dispatch } = useContext(ProductContext);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch({ type: "SEARCH", payload: search });
+    }, 500);
+
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search]);
 
   return (
     <>

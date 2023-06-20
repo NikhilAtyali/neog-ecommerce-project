@@ -62,7 +62,7 @@ function CartDetailCard(product) {
               }}
               disabled={disableCursor}
             >
-              Move TO WISHLIST
+              Add TO WISHLIST
             </button>
           )}
         </div>
