@@ -3,6 +3,7 @@ import { CartContext } from "../../../src/context/CartContext"
 import { AuthContext } from "../../context/AuthContext"
 import { toastHandler } from "../../utils/Toast";
 import { useNavigate } from "react-router-dom";
+import { clearCartService } from "../../services/services";
 // import "./CartSummary.css";
 import "./CartSummery2.css"
 import Logo from "../../assets/img/Logo.png"
@@ -37,7 +38,7 @@ function CartSummary({ selectedAddress }) {
   };
 
   const displayRazorpay = async () => {
-    
+    const encodedToken = localStorage.getItem("encodedToken");
     if (selectedAddress.name) {
       const res = await loadScript(
         "https://checkout.razorpay.com/v1/checkout.js"
@@ -61,7 +62,7 @@ function CartSummary({ selectedAddress }) {
           setCartItems(() => []);
           setTotalPrice(0);
           setTotalDiscount(0);
-
+          clearCartService(encodedToken, cartItems);
           navigate("/order-success");
         },
         prefill: {

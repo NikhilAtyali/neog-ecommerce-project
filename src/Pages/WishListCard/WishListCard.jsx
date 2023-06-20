@@ -6,7 +6,7 @@ import { useDisableCursor } from "../../hooks/useDisableCursor";
 import { toastHandler } from "../../utils/Toast";
 import { WishlistContext } from "../../context/WishListContext"
 import { CartContext } from "../../context/CartContext"
-import { toast } from "react-toastify";
+import "./WishListCard.css"
 
 function WishlistCard({ product }) {
   const { _id, image, productName, rating, price, oldPrice, discount } =

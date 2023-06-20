@@ -6,17 +6,19 @@ export const Wishlist = () => {
   const { wishlistItems } = useContext(WishlistContext);
   return (
     <>
+    {wishlistItems.length === 0 ? (
+      <div className="empty-wishlist-container">
+        <h1>You haven't added anything in the wishlist yet.</h1>
+      </div>
+    ) : (
       <ul className="wishlist-container">
-      {wishlistItems.length === 0 ? (
-          <h1>You haven't added anything in the wishlist yet.</h1>
-        ) : (
-          wishlistItems.map((item) => (
-            <li key={item._id}>
-              <WishlistCard product={item} />
-            </li>
-          ))
-        )}
+        {wishlistItems.map((item) => (
+          <li key={item._id}>
+            <WishlistCard product={item} />
+          </li>
+        ))}
       </ul>
-    </>
+    )}
+  </>
   );
 };
