@@ -71,28 +71,34 @@ export function ProductDetails() {
                 <Link to="/cart">GO TO CART</Link>	
               </button>	
             ) : (	
-              <button	
-                className="product-details__add-to-cart-btn"	
+              <button
+                className="product-details__add-to-cart-btn"
+                id={disableCursor ? "disable-cursor" : ""}
+                disabled={disableCursor}
                 onClick={() => {
+                  disableCursorHandler();
                   addItemToCart(selectedProduct);
-                }}	
-              >	
-                ADD TO CART	
-              </button>	
+                }}
+              >
+                ADD TO CART
+              </button>
             )}	
             {productExistInWishlist ? (	
               <button className="product-details__add-to-wishlist-btn">	
                 <Link to="/wishlist">GO TO WISHLIST</Link>	
               </button>	
             ) : (	
-              <button	
-                className="product-details__add-to-wishlist-btn"	
-                onClick={() => {
-                  addItemToWishlist(selectedProduct);
-                }}
-              >	
-                ADD TO WISHLIST	
-              </button>	
+              <button
+              className="product-details__add-to-wishlist-btn"
+              disabled={disableCursor}
+              onClick={() => {
+                disableCursorHandler();
+                addItemToWishlist(selectedProduct);
+              }}
+              id={disableCursor ? "disable-cursor" : ""}
+            >
+              ADD TO WISHLIST
+            </button>	
             )}
           </div>
 
