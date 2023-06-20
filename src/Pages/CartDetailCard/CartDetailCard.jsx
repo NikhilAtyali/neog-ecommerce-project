@@ -54,7 +54,7 @@ function CartDetailCard(product) {
             </button>
           ) : (
             <button
-            id={`${disableCursor ? "disable-cursor" : ""}`}
+            id={disableCursor ? "disable-cursor" : ""}
               className="cart-add-to-wishlist-btn"
               onClick={() => {
                 disableCursorHandler();

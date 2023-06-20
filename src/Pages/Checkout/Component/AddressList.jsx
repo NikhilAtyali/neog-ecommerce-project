@@ -1,7 +1,7 @@
 import "./AddressList.css";
 import { useContext } from "react";
 import { addressContext } from "../../../context/AddressContext"
-
+import { Link } from "react-router-dom";
 function AddressList({selectedAddress}) {
   const { addresses } = useContext(addressContext);
   console.log(addresses);
@@ -26,6 +26,9 @@ function AddressList({selectedAddress}) {
           </label>
         </div>
       ))}
+      <button className="add-address-btn">
+        <Link to="/account/address">Add Address</Link>
+      </button>
     </div>
   );
 }
