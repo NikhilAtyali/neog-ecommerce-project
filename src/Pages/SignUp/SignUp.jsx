@@ -130,13 +130,13 @@ export function SignUp() {
           name=""
           id="confirmPassword"
         />
-        <div className="show-pass-container">
-        <input
+         <div className="show-pass-container">
+          <input
             type="checkbox"
             onChange={() =>
               setFormData((prev) => ({
                 ...prev,
-                showConfirmPassword: !prev.showConfirmPassword,
+                showPassword: !prev.showPassword,
               }))
             }
           />

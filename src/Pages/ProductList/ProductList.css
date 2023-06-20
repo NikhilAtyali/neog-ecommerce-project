@@ -11,6 +11,10 @@
   }
   
 
+  .products-container {
+    padding-bottom: 5rem;
+    justify-content: center;
+  }
   .no-products-heading {
     text-align: center;
   }

@@ -2,13 +2,17 @@ import { useContext } from "react";
 import "./ProductList.css"
 import { ProductContext } from "../../context/ProductContext"
 import ProductCard from "./Component/ProductCard";
+import {Loader} from "../../Components/Loader/Loader"
 
 function ProductsList({
   showFilterBtn,
   setShowFilterMobile,
   setShowFilterBtn,
 }) {
-  const { filteredArray } = useContext(ProductContext);
+  
+  const { filteredArray, isLoading } = useContext(ProductContext);
+
+  if (isLoading) return <Loader />;
 
   return filteredArray.length === 0 ? (
     <h2 className="no-products-heading">No Products Found!</h2>

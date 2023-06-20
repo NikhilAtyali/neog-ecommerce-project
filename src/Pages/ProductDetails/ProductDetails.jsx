@@ -98,7 +98,7 @@ export function ProductDetails() {
               id={disableCursor ? "disable-cursor" : ""}
             >
               ADD TO WISHLIST
-            </button>	
+          </button>	
             )}
           </div>
 
