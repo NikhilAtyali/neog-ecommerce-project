@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import "../CartSummery/CartSummery2.css";
 import { CartContext } from "../../context/CartContext"
+import "../CartSummery/CartSummery2.css";
 import { NavLink } from "react-router-dom";
 
 function PriceDetail() {
@@ -10,12 +10,12 @@ function PriceDetail() {
     <div className="cart-summary-container">
       <h4>PRICE DETAILS</h4>
       <hr />
-      {cartItems.map((item) => (
-        <div className="summary-item">
+      {cartItems.map(({ id, productName, price, qty }) => (
+        <div className="summary-item" key={id}>
           <span>
-            {item.productName} ({item.qty})
+            {productName} ({qty})
           </span>
-          <span>₹{item.price * item.qty}</span>
+          <span>₹{price * qty}</span>
         </div>
       ))}
 

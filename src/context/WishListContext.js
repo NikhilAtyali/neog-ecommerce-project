@@ -5,8 +5,8 @@ import {
   deleteFromWishlistService,
 } from "../../src/services/services"
 import { toast } from "react-toastify";
+import { toastHandler } from "../utils/Toast";
 export const WishlistContext = createContext();
-
 
 export const WishlistContextProvider = ({ children }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
@@ -18,27 +18,9 @@ export const WishlistContextProvider = ({ children }) => {
         const response = await addToWishlistService(encodedToken, product);
 
         setWishlistItems(() => response.data.wishlist);
-        toast.success("Added To The Wishlist", {
-          position: "bottom-right",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
+        toastHandler("success", "Added To The Wishlist");
       } else {
-        toast.info("Please Login First", {
-          position: "bottom-right",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
+        toastHandler("info", "Please Login First");
       }
     } catch (e) {
       console.error(e);
