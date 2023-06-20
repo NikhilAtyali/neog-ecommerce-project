@@ -1,7 +1,6 @@
 import axios from "axios";
 import {  useState, useEffect } from "react";
 import { createContext } from "react";
-import { toast } from "react-toastify";
 import { addToCartService, deleteFromCartService } from "../services/services"
 import { toastHandler } from "../utils/Toast";
 export const CartContext = createContext();
