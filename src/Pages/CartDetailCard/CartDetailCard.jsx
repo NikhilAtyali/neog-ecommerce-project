@@ -1,21 +1,14 @@
 import "./CartDetailCard.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { CartContext, WishListContext } from "../../context" 
 import { useContext, useState } from "react";
-import { CartContext } from "../../context/CartContext"
 import { WishlistContext } from "../../context/WishListContext"
 import { Link } from "react-router-dom";
-import { useDisableCursor } from "../../utils/useDisableCursor";
+import { useDisableCursor } from "../../hooks/useDisableCursor";
 function CartDetailCard(product) {
-  const {
-    _id,
-    image,
-    qty,
-    productName,
-    oldPrice,
-    price,
-    discount,
-  } = product
+  const { _id, image, alt, qty, productName, oldPrice, price, discount } =
+    product || {};
   const { removeItemFromCart, increaseQuantity, decreaseQuantity } =
     useContext(CartContext);
     const { wishlistItems, addItemToWishlist } = useContext(WishlistContext);
@@ -24,12 +17,12 @@ function CartDetailCard(product) {
   const [disableCursor, disableCursorHandler] = useDisableCursor();
   return (
     <div className="cart-card-container">
-      <img className="card-card__image" src={image} alt="" />
+      <img className="card-card__image" src={image} alt={alt} />
       <div className="cart-item-details">
         <h4>{productName}</h4>
         <div className="cart-prices-container">
-          <span className="cart-card-container__current-price">₹{price}</span>
-          <span className="cart-card-container__old-price">₹{oldPrice}</span>
+        <span className="cart-card-container__current-price">₹{+price}</span>
+          <span className="cart-card-container__old-price">₹{+oldPrice}</span>
         </div>
         <span className="cart-item-discount">{discount}% OFF</span>
         <div className="cart-item-quantity">
@@ -54,7 +47,7 @@ function CartDetailCard(product) {
           >
             REMOVE FROM CART
           </button>
-          <br />
+          
           {productExistInWishlist ? (
             <button className="cart-add-to-wishlist-btn">
               <Link to="/wishlist">GO TO WISHLIST</Link>
