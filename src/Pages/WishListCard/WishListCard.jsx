@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { WishlistContext } from "../../context/WishListContext"
 import { CartContext } from "../../context/CartContext"
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useDisableCursor } from "../../utils/useDisableCursor";
 
 function WishlistCard({ product }) {
   const { _id, image, productName, rating, price, oldPrice, discount } =
@@ -18,13 +18,7 @@ function WishlistCard({ product }) {
 
   const productExistInCart = cartItems.some((item) => item._id === _id);
   const productExistInWishlist = wishlistItems.some((item) => item._id === _id);
-  const [disableCursor, setDisableCursor] = useState(false);
-  const disableCursorHandler = () => {
-    setDisableCursor(true);
-    setTimeout(() => {
-      setDisableCursor(false);
-    }, 1000);
-  };
+  const [disableCursor, disableCursorHandler] = useDisableCursor();
   return (
     <div className="product-card">
       {productExistInWishlist ? (

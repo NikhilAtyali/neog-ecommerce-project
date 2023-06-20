@@ -3,9 +3,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./ProductCard.css";
 import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
-import { CartContext, WishlistContext } from "../../../context"
+import { CartContext, WishlistContext } from "../../../context";
+import { useDisableCursor } from "../../../utils/useDisableCursor";
 function ProductCard({ product }) {
-  const [disableCursor, setDisableCursor] = useState(false);
   const { _id, image, productName, rating, price, oldPrice, discount } =
     product;
   const { cartItems, addItemToCart } = useContext(CartContext);
@@ -14,12 +14,7 @@ function ProductCard({ product }) {
 
   const productExistInCart = cartItems.some((item) => item._id === _id);
   const productExistInWishlist = wishlistItems.some((item) => item._id === _id);
-  const disableCursorHandler = () => {
-    setDisableCursor(true);
-    setTimeout(() => {
-      setDisableCursor(false);
-    }, 1000);
-  };
+  const [disableCursor, disableCursorHandler] = useDisableCursor();
   return (
     <div className="product-card">
       {productExistInWishlist ? (
