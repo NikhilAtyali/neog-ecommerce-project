@@ -3,7 +3,7 @@ import Carousel from "./Carousel"
 export function Home() {
     return (
       <>
-        <div className="hero">
+        <div className="home">
           <Carousel />
         <ProductCategory />
         </div>
