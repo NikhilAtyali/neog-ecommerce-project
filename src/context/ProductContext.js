@@ -14,9 +14,17 @@ const reducer = (state, action) => {
         filters: { ...state.filters, search: action.payload },
       };
     }
+
+    case "SEARCH_QUERY": {
+      return {
+        ...state,
+        searchQuery: action.payload,
+      };
+    }
     case "RESET": {
       return {
         ...state,
+        searchQuery: "",
         filters: {
           search: "",
           price: "",
@@ -74,6 +82,7 @@ const reducer = (state, action) => {
     case "CLEAR": {
       return {
         ...state,
+        searchQuery: "",
         filters: {
           search: "",
           price: "",
@@ -91,9 +100,11 @@ const reducer = (state, action) => {
 export const ProductContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     products: [],
+    productCategoryList: [],
+    searchQuery: "",
     filters: {
       search: "",
-      price: { htl: false, lth: false },
+      price: "",
       categories: [],
       rating: "-1",
     },
