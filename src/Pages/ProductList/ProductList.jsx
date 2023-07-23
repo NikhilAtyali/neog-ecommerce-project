@@ -29,7 +29,6 @@ function ProductsList({
         }}
         className="filter-btn-mobile"
       >
-        <p>Filters</p>
       </div>
     </div>
   );

@@ -4,6 +4,8 @@
   }
   .nav__logo {
     cursor: pointer;
+    width: 80px;
+    height: 80px;
   }
   .nav-container {
     background-color: black;
