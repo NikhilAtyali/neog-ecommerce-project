@@ -11,6 +11,7 @@ import "./Nav.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Logo from "../../assets/img/Logo.png"
+import FullLogo from "../../assets/img/FullLogo.png"
 import "./Nav.css"
 
 export function Nav() {
@@ -34,7 +35,7 @@ export function Nav() {
       <nav className="nav">
       <NavLink to="/" onClick={() => dispatch({ type: "RESET" })}>
         
-        <img className="nav__logo" src={Logo} alt="logo" />
+        <img className="nav__logo" src={FullLogo} alt="logo" />
         </NavLink>
         <Search />
 
